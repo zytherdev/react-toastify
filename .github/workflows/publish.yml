@@ -56,16 +56,3 @@ jobs:
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
     
-    - name: Create GitHub Release
-      if: steps.check.outputs.skip == 'false'
-      uses: softprops/action-gh-release@v1
-      with:
-        tag_name: v${{ steps.check.outputs.version }}
-        name: Release v${{ steps.check.outputs.version }}
-        generate_release_notes: true
-        files: |
-          dist/**/*
-          README.md
-          LICENSE
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
