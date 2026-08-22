@@ -1,6 +1,6 @@
 # React Toastify
 
-[![npm version](https://badge.fury.io/js/%40zyther%2Freact-toastify.svg)](https://badge.fury.io/js/%40zyther%2Freact-toastify)
+[![npm version](https://d25lcipzij17d.cloudfront.net/badge.svg?c=eyJhbGciOiJub25lIn0.eyJiIjp7IngiOmZhbHNlLCJ0IjoidjZlIiwibCI6Im5wbSBwYWNrYWdlIiwiciI6IjAuMS4wIn19)](https://badge.fury.io/js/%40zyther%2Freact-toastify)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?logo=typescript\&logoColor=white)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-20232A?logo=react\&logoColor=61DAFB)](https://react.dev/)
