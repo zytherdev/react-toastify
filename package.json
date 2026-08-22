@@ -24,6 +24,7 @@
     "build:all": "npm run build:lib && npm run build:lib:css",
     "start": "next start",
     "lint": "next lint",
+    "test": "jest",
     "prepublishOnly": "npm run build:all"
   },
   "files": [
