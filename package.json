@@ -25,6 +25,7 @@
     "start": "next start",
     "lint": "next lint",
     "test": "jest",
+    "tag": "node scripts/tag.js",
     "prepublishOnly": "npm run build:all"
   },
   "files": [
