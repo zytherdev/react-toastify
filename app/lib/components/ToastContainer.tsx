@@ -19,7 +19,7 @@ const positionClasses: Record<ToastPosition, string> = {
 export const ToastContainer: React.FC<ToastContainerProps> = ({ theme }) => {
   const { toasts, removeToast } = useToastStore();
 
-  // Agrupa toasts por posição
+  // agrupa toasts por posição
   const groupedToasts = toasts.reduce((acc, toast) => {
     const position = toast.position || 'bottom-right';
     if (!acc[position]) acc[position] = [];

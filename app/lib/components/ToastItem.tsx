@@ -29,6 +29,7 @@ export const ToastItem: React.FC<ToastItemProps> = ({ toast, onDismiss, theme })
     }
 
     return undefined
+
   }, [toast.duration]);
 
   const handleDismiss = () => {
@@ -171,8 +172,7 @@ export const ToastItem: React.FC<ToastItemProps> = ({ toast, onDismiss, theme })
         </button>
       </div>
 
-      {toast.duration && toast.duration > 0 && (
-        <div className="absolute bottom-0 left-0 right-0 h-1 bg-gray-200 dark:bg-gray-700 rounded-b-lg overflow-hidden">
+      <div className="absolute bottom-0 left-0 right-0 h-1 bg-gray-200 dark:bg-gray-700 rounded-b-lg overflow-hidden">
           <div
             className={`h-full transition-all duration-100 ease-linear ${progressColorMap[toast.type]}`}
             style={{ 
@@ -181,7 +181,6 @@ export const ToastItem: React.FC<ToastItemProps> = ({ toast, onDismiss, theme })
             }}
           />
         </div>
-      )}
-    </div>
+      </div>
   );
 };

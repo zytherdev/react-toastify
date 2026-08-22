@@ -20,7 +20,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <ToastProvider
           defaultPosition="bottom-right"
-          defaultDuration={5000}
+          defaultDuration={0}
           maxToasts={5}
           theme="system"
         >
