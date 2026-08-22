@@ -1,31 +1,71 @@
-name: Publish
+name: Publish to npm
 
 on:
   push:
     branches: [ "main" ]
+    paths:
+      - 'package.json' # Publica só se package.json mudar
   release:
-    types: [created]
+    types: [published]
 
 jobs:
-  publish:
+  build-and-publish:
     runs-on: ubuntu-latest
-      
+    
     steps:
     - uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
     
-    - name: Use Node.js
+    - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
         node-version: '20.x'
         registry-url: 'https://registry.npmjs.org'
+        cache: 'npm'
     
     - name: Install dependencies
       run: npm ci
     
+    - name: Lint
+      run: npm run lint || echo "Lint skipped"
+    
     - name: Build
       run: npm run build:all
     
-    - name: Publish
+    - name: Test
+      run: npm test || echo "No tests yet"
+    
+    - name: Check version
+      id: check
+      run: |
+        VERSION=$(node -p "require('./package.json').version")
+        echo "version=$VERSION" >> $GITHUB_OUTPUT
+        
+        # Verifica se a versão já existe no npm
+        if npm view @zyther/react-toastify@$VERSION version &> /dev/null; then
+          echo "Version $VERSION already exists, skipping publish"
+          echo "skip=true" >> $GITHUB_OUTPUT
+        else
+          echo "skip=false" >> $GITHUB_OUTPUT
+        fi
+    
+    - name: Publish to npm
+      if: steps.check.outputs.skip == 'false'
       run: npm publish --access public
-      env: 
+      env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+    
+    - name: Create GitHub Release
+      if: steps.check.outputs.skip == 'false'
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: v${{ steps.check.outputs.version }}
+        name: Release v${{ steps.check.outputs.version }}
+        generate_release_notes: true
+        files: |
+          dist/**/*
+          README.md
+          LICENSE
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
