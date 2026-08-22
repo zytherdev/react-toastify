@@ -1,6 +1,6 @@
 {
   "name": "@zyther/react-toastify",
-  "version": "0.1.4",
+  "version": "0.1.3",
   "publishConfig": {
     "access": "public",
     "registry": "https://npm.pkg.github.com"
