@@ -19,7 +19,6 @@
   },
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
     "build:lib": "tsup",
     "build:lib:css": "tailwindcss -i ./app/globals.css -o ./dist/styles.css --minify",
     "build:all": "npm run build:lib && npm run build:lib:css",
