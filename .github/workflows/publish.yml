@@ -9,10 +9,6 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-latest
-    
-    permissions:
-      contents: read
-      id-token: write
       
     steps:
     - uses: actions/checkout@v4
@@ -30,4 +26,4 @@ jobs:
       run: npm run build:all
     
     - name: Publish
-      run: npm publish --access public --provenance        
+      run: npm publish --access public
