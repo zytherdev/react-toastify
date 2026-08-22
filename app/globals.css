@@ -1,15 +1,11 @@
-@import "tailwindcss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities; 
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -23,4 +19,33 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer components {
+  .toast-container {
+    @apply fixed z-50 flex flex-col gap-2 pointer-events-none;
+  }
+
+  .toast-container > * {
+    @apply pointer-events-auto;
+  }
+
+  /* Custom scrollbar */
+  .toast-scroll {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(156, 163, 175, 0.5) transparent;
+  }
+
+  .toast-scroll::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .toast-scroll::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .toast-scroll::-webkit-scrollbar-thumb {
+    background-color: rgba(156, 163, 175, 0.5);
+    border-radius: 20px;
+  }
 }

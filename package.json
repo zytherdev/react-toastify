@@ -1,26 +1,82 @@
 {
-  "name": "react-toastify",
+  "name": "@zyther/react-toastify",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "description": "A modern, customizable toast notification library for React/Next.js",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js"
+    },
+    "./styles": {
+      "import": "./dist/styles.css",
+      "require": "./dist/styles.css"
+    }
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "build:lib": "tsup",
+    "build:lib:css": "tailwindcss -i ./app/globals.css -o ./dist/styles.css --minify",
+    "build:all": "npm run build:lib && npm run build:lib:css",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "next lint",
+    "prepublishOnly": "npm run build:all"
   },
-  "dependencies": {
-    "next": "16.3.2",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "peerDependencies": {
     "react": "19.2.8",
     "react-dom": "19.2.8"
   },
+  "dependencies": {
+    "zustand": "^4.4.7"
+  },
   "devDependencies": {
-    "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "autoprefixer": "^10.4.17",
     "eslint": "^9",
     "eslint-config-next": "16.3.2",
-    "tailwindcss": "^4",
+    "next": "16.3.2",
+    "postcss": "^8.4.35",
+    "prettier": "^3.9.6",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "tailwindcss": "^3.4.1",
+    "tsup": "^8.5.1",
     "typescript": "^5"
-  }
+  },
+  "keywords": [
+    "react",
+    "toast",
+    "notification",
+    "nextjs",
+    "typescript",
+    "ui",
+    "component",
+    "toastify",
+    "snackbar",
+    "alert",
+    "message"
+  ],
+  "author": "zytherdev <zyther.dev@outlook.com>",
+  "homepage": "https://github.com/zytherdev/react-toastify#readme",
+  "bugs": {
+    "url": "https://github.com/zytherdev/react-toastify/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zytherdev/react-toastify.git"
+  },
+  "license": "MIT"
 }
