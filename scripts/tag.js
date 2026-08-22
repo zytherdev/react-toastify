@@ -5,12 +5,12 @@ const version = pkg.version;
 const tag = `v${version}`;
 
 try {
-  // Verificar se tag existe
-    execSync(`git rev-parse ${tag}`, { stdio: 'ignore' });
-      console.log(`✅ Tag ${tag} já existe`);
-      } catch {
-        // Criar tag
-          execSync(`git tag ${tag}`);
-            execSync(`git push origin ${tag}`);
-              console.log(`🏷️ Tag ${tag} criada e enviada`);
-              }
+  // check se tag existe
+  execSync(`git rev-parse ${tag}`, { stdio: 'ignore' });
+  console.log(`✅ Tag ${tag} já existe`);
+} catch {
+  // criar tag
+  execSync(`git tag ${tag}`);
+  execSync(`git push origin ${tag}`);
+  console.log(`🏷️ Tag ${tag} criada e enviada`);
+}
