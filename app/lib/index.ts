@@ -7,3 +7,5 @@ export type {
   ToastPosition,
   ToastProviderProps,
 } from './types';
+
+import './styles/toast.css'

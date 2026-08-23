@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import "./globals.css";
-import { ToastProvider } from "./lib/components/ToastProvider";
+import "./globals.css"
+import { ClientWrapper } from "./toast-wrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,14 +18,10 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <body className={inter.className}>
-        <ToastProvider
-          defaultPosition="bottom-right"
-          defaultDuration={0}
-          maxToasts={5}
-          theme="system"
+        <ClientWrapper
         >
           {children}
-        </ToastProvider>
+        </ClientWrapper>
       </body>
     </html>
   );

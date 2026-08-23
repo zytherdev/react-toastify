@@ -1,6 +1,6 @@
 {
   "name": "@zyther/react-toastify",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "A modern, customizable toast notification library for React/Next.js",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -19,7 +19,7 @@
   "scripts": {
     "dev": "next dev",
     "build:lib": "tsup",
-    "build:lib:css": "tailwindcss -i ./app/globals.css -o ./dist/styles.css --minify",
+    "build:lib:css": "cp app/lib/styles/toast.css dist/styles.css",
     "build:all": "npm run build:lib && npm run build:lib:css",
     "start": "next start",
     "lint": "next lint",

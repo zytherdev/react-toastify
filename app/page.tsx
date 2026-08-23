@@ -1,6 +1,6 @@
 'use client';
 
-import { useToast } from './lib/hooks/useToast';
+import { useToast } from "@zyther/react-toastify";
 
 export default function Home() {
   const toast = useToast();
