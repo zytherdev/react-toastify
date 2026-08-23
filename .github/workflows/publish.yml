@@ -4,7 +4,7 @@ on:
   push:
     branches: [ "main" ]
     paths:
-      - 'package.json' # Publica só se package.json mudar
+      - 'package.json' # pub só se package.json mudar
   release:
     types: [published]
 
