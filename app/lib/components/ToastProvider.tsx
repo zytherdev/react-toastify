@@ -10,10 +10,10 @@ import '../styles/toast.css'
 
 export const ToastProvider: React.FC<ToastProviderProps> = ({
   children,
-  defaultPosition = 'bottom-right',
+  defaultPosition = 'top-right',
   defaultDuration = 4000,
   maxToasts = 5,
-  theme = 'system',
+  theme = 'light',
 }) => {
   const [currentTheme, setCurrentTheme] = useState<'light' | 'dark'>('light')
   const [isMounted, setIsMounted] = useState(false)
