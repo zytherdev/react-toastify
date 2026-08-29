@@ -13,7 +13,7 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({
   defaultPosition = 'top-right',
   defaultDuration = 4000,
   maxToasts = 5,
-  theme = 'light',
+  theme = 'system',
 }) => {
   const [currentTheme, setCurrentTheme] = useState<'light' | 'dark'>('light')
   const [isMounted, setIsMounted] = useState(false)
@@ -27,8 +27,9 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({
 
   useEffect(() => {
     setIsMounted(true)
-
+    console.log(theme)
     if (theme === 'system') {
+      console.log("OPPA")
       const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
       setCurrentTheme(mediaQuery.matches ? 'dark' : 'light')
 
@@ -39,7 +40,7 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({
       return () => mediaQuery.removeEventListener('change', handler)
     }
 
-    setCurrentTheme(theme)
+    //setCurrentTheme(theme)
 
     return undefined
   }, [theme])
