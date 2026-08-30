@@ -6,7 +6,6 @@ import { Toast } from '../types'
 interface ToastItemProps {
   toast: Toast
   onDismiss: (id: string) => void
-  theme: 'light' | 'dark'
 }
 
 export const ToastItem: React.FC<ToastItemProps> = ({ toast, onDismiss }) => {

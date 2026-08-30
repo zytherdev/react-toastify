@@ -29,12 +29,13 @@ interface ToastOptions {
     };
     onClose?: () => void;
 }
+type ToastTheme = 'light' | 'dark' | 'system';
 interface ToastProviderProps {
     children: React.ReactNode;
     defaultPosition?: ToastPosition;
     defaultDuration?: number;
     maxToasts?: number;
-    theme?: 'light' | 'dark' | 'system';
+    theme?: ToastTheme;
 }
 
 declare const ToastProvider: React$1.FC<ToastProviderProps>;

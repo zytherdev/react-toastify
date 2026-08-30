@@ -3,10 +3,10 @@
 import React from 'react'
 import { useToastStore } from '../store/toastStore'
 import { ToastItem } from './ToastItem'
-import { ToastPosition } from '../types'
+import { ToastPosition, ToastTheme } from '../types'
 
 interface ToastContainerProps {
-  theme: 'light' | 'dark'
+  theme: ToastTheme
 }
 
 const positionClasses: Record<ToastPosition, string> = {
@@ -36,6 +36,7 @@ export const ToastContainer: React.FC<ToastContainerProps> = ({ theme }) => {
       {Object.entries(groupedToasts).map(([position, positionToasts]) => (
         <div
           key={position}
+          data-theme={theme}
           className={`z-toast-container ${positionClasses[position as ToastPosition]}`}
         >
           {positionToasts.map((toast) => (
@@ -43,7 +44,6 @@ export const ToastContainer: React.FC<ToastContainerProps> = ({ theme }) => {
               key={toast.id}
               toast={toast}
               onDismiss={removeToast}
-              theme={theme}
             />
           ))}
         </div>

@@ -1,7 +1,6 @@
-/* eslint-disable react-hooks/set-state-in-effect */
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { useEffect } from 'react'
 import { ToastContainer } from './ToastContainer'
 import { ToastProviderProps } from '../types'
 import { useToastStore } from '../store/toastStore'
@@ -15,8 +14,6 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({
   maxToasts = 5,
   theme = 'system',
 }) => {
-  const [currentTheme, setCurrentTheme] = useState<'light' | 'dark'>('light')
-  const [isMounted, setIsMounted] = useState(false)
 
   useEffect(() => {
     const store = useToastStore.getState()
@@ -25,34 +22,10 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({
     store.maxToasts = maxToasts
   }, [defaultPosition, defaultDuration, maxToasts])
 
-  useEffect(() => {
-    setIsMounted(true)
-    console.log(theme)
-    if (theme === 'system') {
-      console.log("OPPA")
-      const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)')
-      setCurrentTheme(mediaQuery.matches ? 'dark' : 'light')
-
-      const handler = (e: MediaQueryListEvent) => {
-        setCurrentTheme(e.matches ? 'dark' : 'light')
-      }
-      mediaQuery.addEventListener('change', handler)
-      return () => mediaQuery.removeEventListener('change', handler)
-    }
-
-    //setCurrentTheme(theme)
-
-    return undefined
-  }, [theme])
-
-  if (!isMounted) {
-    return <>{children}</>
-  }
-
   return (
     <>
       {children}
-      <ToastContainer theme={currentTheme} />
+      <ToastContainer theme={theme} />
     </>
   )
 }

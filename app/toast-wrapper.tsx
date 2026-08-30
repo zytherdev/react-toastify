@@ -1,8 +1,8 @@
 'use client'
 
-//import { ToastProvider } from "@zyther/react-toastify";
-import { ToastProvider } from './lib/components/ToastProvider.tsx'
-//import "@zyther/react-toastify/styles";
+import { ToastProvider } from "@zyther/react-toastify";
+//import { ToastProvider } from './lib/components/ToastProvider'
+import "@zyther/react-toastify/styles"
 
 interface ClientWrapperProps {
   children: React.ReactNode
@@ -12,9 +12,9 @@ export function ClientWrapper({ children }: ClientWrapperProps) {
   return (
     <ToastProvider
       defaultPosition="top-right"
-      defaultDuration={0}
+      defaultDuration={6000}
       maxToasts={5}
-      theme="light"
+      theme="system"
     >
       {children}
     </ToastProvider>
